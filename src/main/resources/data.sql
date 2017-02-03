@@ -1,4 +1,4 @@
 delete from user;
-insert into user(id, name) values(1,'Siva');
-insert into user(id, name) values(2,'Prasad');
-insert into user(id, name) values(3,'Reddy');
+insert into user(id, login, mail) values(1,'Siva', 'siva@gmail.com');
+insert into user(id, login, mail) values(2,'Prasad', 'prasad@gmail.com');
+insert into user(id, login, mail) values(3,'Reddy', 'redddy@gmail.com');

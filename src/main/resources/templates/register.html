@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+			<div style="margin-top:10px">
+				<div class="col-md-1 center-block">
+				<a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQsV-78BDICVdsNEaweJNc1xfE3U0Qc7EmBrEYmPibiAGDokYZ3NJV3pBzO0g" class="img-responsive img-rounded"/></a>
+				<div class="col-xs-12" style="height:5px;"></div>
+				<button class="btn btn-primary btn-sm btn-block"><div style="margin-left:-5px">Zaloguj się</div></button>
+			</div>
+          </div>
+          <div class="col-md-10">
+            <h1 class="text-center">Rejestracja</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+	<form action="#" th:action="@{/register/post}" th:object="${newUser}" method="post">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+			  <h3 class="text-center">Dane konta</h3>
+			  <p class="text-center">Pola oznaczone gwiazdką(*) są wymagane</p>
+				<div class="col-xs-12" style="height:30px;"></div>
+			  <div class="form-group">
+				  <input type="hidden" th:field="*{id}" />
+			  </div>
+              <div class="form-group">
+                <label class="control-label" for="formLogin" required="required">Nazwa użytkownika*</label>
+                <input th:field="*{login}" class="form-control" id="formLogin" placeholder="Podaj nazwę" type="text"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="formEmail" required="required">Adres email*</label>
+                <input th:field="*{mail}" class="form-control" id="formEmail" placeholder="Podaj email" type="email"/>
+              </div>
+			  <div class="form-group">
+                <label class="control-label" for="formPassword" required="required">Hasło*</label>
+                <input th:field="*{password}" class="form-control" id="formPassword" placeholder="Podaj hasło" type="password"/>
+              </div>
+			  <div class="form-group">
+                <label class="control-label" for="formPassword2" required="required">Powtórz hasło*</label>
+                <input class="form-control" id="formPassword2" placeholder="Powtórz hasło" type="password"/>
+              </div>
+          </div>
+		  <div class="col-md-4">
+		  </div>
+          <div class="col-md-4">
+			  <h3 class="text-center">Dane adresowe</h3>
+			  <p class="text-center">Możesz uzupełnić je później, edytując swoje konto<br/>lub dopiero przy składaniu zamówienia</p>
+				<div class="col-xs-12" style="height:5px;"></div>
+              <div class="form-group">
+                <label class="control-label" for="formName" required="required">Imię</label>
+                <input class="form-control" id="formName" placeholder="Podaj swoje imię" type="text"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="formName" required="required">Nazwisko</label>
+                <input class="form-control" id="formName" placeholder="Podaj swoje nazwisko" type="text"/>
+              </div>
+			  <div class="form-group">
+                <label class="control-label" for="formName" required="required">Ulica</label>
+                <input class="form-control" id="formName" placeholder="Podaj ulicę zamieszkania" type="text"/>
+              </div>
+			  <div class="row">
+				  <div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" for="formName" required="required">Nr domu</label>
+						<input class="form-control" id="formName" placeholder="Podaj numer domu" type="text"/>
+					</div>
+				  </div>
+				  <div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" for="formName" required="required">Nr mieszkania</label>
+						<input class="form-control" id="formName" placeholder="Podaj numer mieszkania" type="text"/>
+					</div>
+				  </div>
+			  </div>
+			  <div class="form-group">
+                <label class="control-label" for="formName" required="required">Miejscowość</label>
+                <input class="form-control" id="formName" placeholder="Podaj miejscowość zamieszkania" type="text"/>
+              </div>
+			  <div class="row">
+				  <div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" for="formName" required="required">Kod pocztowy</label>
+						<input class="form-control" id="formName" placeholder="Podaj kod pocztowy" type="text"/>
+					</div>
+				  </div>
+			  </div>
+          </div>
+        </div>
+		<div class="row">
+          <div class="col-md-12">
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" required="required"/> Zapoznałem/am się z regulaminem sklepu i akceptuję jego treść:*<br/>
+							<a href="#"> Regulamin sklepu Pro-Gamer</a>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox" required="required"><label><input type="checkbox"/>Wyrażam zgodę na przetwarzanie danych osobowych*</label></div>
+				</div>
+			</div>
+			<div class="col-xs-12" style="height:30px;"></div>
+				<div class="col-md-4">
+					<div class="btn-group-justified">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-danger">Powrót</button>
+						</div>
+						<div class="btn-group">
+							<button type="reset" class="btn btn-sm btn-default">Wyczyść</button>
+						</div>
+						<div class="btn-group">
+							<button type="submit" class="btn btn-sm btn-primary">Rejestracja</button>
+						</div>
+					</div>
+					<div class="col-xs-12" style="height:30px;"></div>
+				</div>
+			</div>
+		  </div>
+		</form>
+		</div>
+
+</body>
+<script type="text/javascript" src="/js/register.js"></script>
+</html>
