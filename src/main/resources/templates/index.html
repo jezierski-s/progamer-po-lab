@@ -2,10 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
+    <span th:replace="imports :: imports"></span>
     <title>Home</title>
 </head>
 <body>
+<div class="col-xs-12" style="height:100px;"></div>
+<span th:replace="header :: header"></span>
 <table>
     <thead>
     <tr>
@@ -20,5 +22,6 @@
     </tr>
     </tbody>
 </table>
+<span th:replace="footer :: footer"></span>
 </body>
 </html>

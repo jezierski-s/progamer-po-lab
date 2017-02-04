@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar navbar-default" style="position:fixed; width:100%; z-index: 100;" th:fragment="header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li th:class="${#httpServletRequest.requestURI == '/'}?'active':''"><a class="navbar-brand" th:href="@{/}">Pro-Gamer <sup> sklep</sup></a></li>
+            </ul>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li th:class="${#httpServletRequest.requestURI == '/offer'}?'active':''"><a href="#">Oferta</a></li>
+                <li th:class="${#httpServletRequest.requestURI == '/register'}?'active':''"><a th:href="@{/register}">Rejestracja</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <!--<a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQsV-78BDICVdsNEaweJNc1xfE3U0Qc7EmBrEYmPibiAGDokYZ3NJV3pBzO0g" class="img-responsive img-rounded"/></a>-->
+                    <a href="#">Zaloguj się</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</html>

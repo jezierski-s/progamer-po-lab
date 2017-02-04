@@ -1,25 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="https://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <span th:replace="imports :: imports"></span>
 </head>
 <body>
+<div class="section">
+	<div class="col-xs-12" style="height:100px;"></div>
+	<span th:replace="header :: header"></span>
+</div>
     <div class="section">
       <div class="container">
         <div class="row">
 			<div style="margin-top:10px">
-				<div class="col-md-1 center-block">
-				<a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQsV-78BDICVdsNEaweJNc1xfE3U0Qc7EmBrEYmPibiAGDokYZ3NJV3pBzO0g" class="img-responsive img-rounded"/></a>
-				<div class="col-xs-12" style="height:5px;"></div>
-				<button class="btn btn-primary btn-sm btn-block"><div style="margin-left:-5px">Zaloguj się</div></button>
 			</div>
-          </div>
-          <div class="col-md-10">
+          <div class="col-md-12">
             <h1 class="text-center">Rejestracja</h1>
           </div>
         </div>
@@ -50,7 +44,7 @@
                 <input th:field="*{mail}" class="form-control" id="formEmail" placeholder="Podaj email" type="email"/>
               </div>
 			  <div class="form-group">
-                <label class="control-label" for="formPassword" required="required">Hasło*</label>
+                <label class="control-label" for="formPassword" required="required">Hasło (minimum 6 znaków)*</label>
                 <input th:field="*{password}" class="form-control" id="formPassword" placeholder="Podaj hasło" type="password"/>
               </div>
 			  <div class="form-group">
@@ -137,7 +131,7 @@
 		  </div>
 		</form>
 		</div>
-
+	<span th:replace="footer :: footer"></span>
 </body>
 <script type="text/javascript" src="/js/register.js"></script>
 </html>
