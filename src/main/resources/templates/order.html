@@ -25,7 +25,7 @@
                 <div class="row">
                     <label class="control-label" for="shipping" required="required">Wybierz opcję dostawy</label>
                 </div>
-                <input list="shipping" class="form-control">
+                <input th:field="*{Shipping}" list="shipping" class="form-control">
                 <datalist id="shipping">
                     <option value="paczkomat">Paczkomat 10,00 zł</option>
                     <option value="ekonomiczny">List ekonomiczny 5,00 zł</option>
@@ -41,7 +41,7 @@
 
                     <label class="control-label" for="payment" required="required">Wybierz opcję płatności</label>
                 </div>
-                <input list="payment" class="form-control">
+                <input th:field="*{payment}" list="payment" class="form-control">
                 <datalist id="payment">
                     <option value="paypal" >PAY PAL</option>
                     <option value="internetowy">Karta płatnicza</option>
@@ -49,7 +49,7 @@
                     <option value="przelew">Przelew zwykły</option>
                     <option value="pobranie">Przy odbiorze + 5,00 zł</option>
                 </datalist>
-            </div>
+                </div>
             </div>
 
 
@@ -58,19 +58,18 @@
                 <div class="row">
                     <label class="control-label" for="facture" required="required">Faktura</label>
                 </div>
-                <input list="facture" class="form-control">
+                <input th:field="*{facture}" list="facture" class="form-control">
                 <datalist id="facture">
                     <option value="nie">NIE</option>
                     <option onclick="show()" value="tak" id="check">TAK</option>
                 </datalist>
-            </div>
+                </div>
             </div>
 
+        </div>
 
-    </form>
 </div>
 <div class="section">
-    <form action="#" th:action="@{/order/post}" th:object="${newOrder}" method="post">
         <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
             <div class="row">
                 <div class="col-md-4">
@@ -90,7 +89,7 @@
                         <input th:field="*{surname}" class="form-control" id="surname" placeholder="Wpisz nazwisko" type="text"/>
                     </div>
                     <div class="form-group">
-                        <label class="control-label" for="street" required="required">Hasło (minimum 6 znaków)*</label>
+                        <label class="control-label" for="street" required="required">Ulica</label>
                         <input th:field="*{street}" class="form-control" id="street" placeholder="Wpisz ulicę" type="text"/>
                     </div>
                     <div class="form-group">
@@ -106,7 +105,7 @@
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="postcode" required="required" >Kod pocztowy</label>
-                            <input th:field="*{city}" class="form-control" id="postcode" placeholder="Wpisz kod pocztowy" type="text"/>
+                            <input th:field="*{postcode}" class="form-control" id="postcode" placeholder="Wpisz kod pocztowy" type="text"/>
                     </div>
                     </div>
                 </div>
@@ -118,40 +117,40 @@
                     <div class="col-xs-12" style="height:5px;"></div>
                     <div class="form-group" >
                         <label class="control-label" for="factureNameComp" required="required">Nazwa firmy</label>
-                        <input class="form-control" id="factureNameComp" placeholder="Wpisz nazwę firmy" type="text"/>
+                        <input th:field="*{factureNameComp}" class="form-control" id="factureNameComp" placeholder="Wpisz nazwę firmy" type="text"/>
                     </div>
                     <div class="form-group"  >
                         <label class="control-label" for="NIP" required="required">NIP</label>
-                        <input class="form-control" id="NIP" placeholder="Wpisz NIP" type="text"/>
+                        <input th:field="*{NIP}" class="form-control" id="NIP" placeholder="Wpisz NIP" type="text"/>
                     </div>
                     <div class="form-group" >
                         <label class="control-label" for="factureName" required="required">Imię</label>
-                        <input class="form-control" id="factureName" placeholder="Wpisz imię" type="text"/>
+                        <input th:field="*{factureName}" class="form-control" id="factureName" placeholder="Wpisz imię" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="factureSurname" required="required">Nazwisko</label>
-                            <input class="form-control" id="factureSurname" placeholder="Wpisz nazwisko" type="text"/>
+                            <input th:field="*{factureSurname}" class="form-control" id="factureSurname" placeholder="Wpisz nazwisko" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="factureStreet" required="required">Ulica</label>
-                            <input class="form-control" id="factureStreet" placeholder="Wpisz ulicę" type="text"/>
+                            <input th:field="*{factureStreet}" class="form-control" id="factureStreet" placeholder="Wpisz ulicę" type="text"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="factureHomeNumber" required="required">Numer domu</label>
-                        <input class="form-control" id="factureHomeNumber" placeholder="Wpisz numer domu" type="text"/>
+                        <input th:field="*{factureHomeNumber}" class="form-control" id="factureHomeNumber" placeholder="Wpisz numer domu" type="text"/>
                     </div>
 
                     <div class="form-group">
                             <label class="control-label" for="factureFlatName" >Numer mieszkania</label>
-                            <input class="form-control" id="factureFlatName" placeholder="Wpisz numer mieszkania" type="text"/>
+                            <input th:field="*{factureFlatName}" class="form-control" id="factureFlatName" placeholder="Wpisz numer mieszkania" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="factureCity" >Mijescowość</label>
-                            <input class="form-control" id="factureCity" placeholder="Wpisz miejscowosc" type="text"/>
+                            <input th:field="*{factureCity}" class="form-control" id="factureCity" placeholder="Wpisz miejscowosc" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="facturePostcode" >Kod pocztowy</label>
-                            <input class="form-control" id="facturePostcode" placeholder="Wpisz kod pocztowy" type="text"/>
+                            <input th:field="*{facturePostcode}" class="form-control" id="facturePostcode" placeholder="Wpisz kod pocztowy" type="text"/>
                     </div>
                     </div>
                 </div>
@@ -169,8 +168,8 @@
                     <div class="col-xs-12" style="height:30px;"></div>
                 </div>
             </div>
+        </form>
         </div>
-    </form>
 </div>
 <span th:replace="footer :: footer"></span>
 </body>
