@@ -2,31 +2,22 @@
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
     <span th:replace="imports :: imports"></span>
+	<title>Register</title>
 </head>
-<body>
+<body style="background-image:url(https://www.eveonline.com/assets/img/universe/background_nebula.jpg)">
 <div class="section">
 	<div class="col-xs-12" style="height:100px;"></div>
 	<span th:replace="header :: header"></span>
 </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-			<div style="margin-top:10px">
-			</div>
-          <div class="col-md-12">
-            <h1 class="text-center">Rejestracja</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <hr/>
-          </div>
-        </div>
-      </div>
-    </div>
+
+<div class="container">
+  <div class="jumbotron" style="background-color:rgba(48, 48, 48, .7)">
+	<h3 class="text-center">Rejestracja</h3>
+  </div>
+</div>
     <div class="section">
 	<form action="#" th:action="@{/register/post}" th:object="${newUser}" method="post">
-      <div class="container">
+      <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
         <div class="row">
           <div class="col-md-4">
 			  <h3 class="text-center">Dane konta</h3>
@@ -74,13 +65,13 @@
 				  <div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="formName" required="required">Nr domu</label>
-						<input class="form-control" id="formName" placeholder="Podaj numer domu" type="text"/>
+						<input class="form-control" id="formName" placeholder="Podaj nr domu" type="text"/>
 					</div>
 				  </div>
 				  <div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="formName" required="required">Nr mieszkania</label>
-						<input class="form-control" id="formName" placeholder="Podaj numer mieszkania" type="text"/>
+						<input class="form-control" id="formName" placeholder="Podaj nr mieszkania" type="text"/>
 					</div>
 				  </div>
 			  </div>

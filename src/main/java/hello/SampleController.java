@@ -25,4 +25,10 @@ public class SampleController {
         model.addAttribute("newUser", new User());
         return "register";
     }
+    @RequestMapping("/offer")
+    public String offer(Model model) {
+        model.addAttribute("users", userService.getAll());
+        return "offer";
+    }
+
 }

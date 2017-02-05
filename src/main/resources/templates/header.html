@@ -16,7 +16,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li th:class="${#httpServletRequest.requestURI == '/offer'}?'active':''"><a href="#">Oferta</a></li>
+                <li th:class="${#httpServletRequest.requestURI == '/offer'}?'active':''"><a th:href="@{/offer}">Oferta</a></li>
                 <li th:class="${#httpServletRequest.requestURI == '/register'}?'active':''"><a th:href="@{/register}">Rejestracja</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
