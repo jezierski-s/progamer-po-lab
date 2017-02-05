@@ -18,6 +18,7 @@ public class User {
     private String password;
     private String mail;
 
+
     private String name;
 
     public Integer getId() {
