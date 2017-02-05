@@ -1,0 +1,178 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <span th:replace="imports :: imports"></span>
+    <title>Order</title>
+</head>
+<body style="background-image:url(https://www.eveonline.com/assets/img/universe/background_nebula.jpg)">
+<div class="section">
+    <div class="col-xs-12" style="height:100px;"></div>
+    <span th:replace="header :: header"></span>
+</div>
+
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(48, 48, 48, .7)">
+        <h3 class="text-center">Zamówienie</h3>
+    </div>
+</div>
+<div class="section">
+    <form action="#" th:action="@{/order/post}" th:object="${newOrder}" method="post">
+    <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
+        <div class="form-inline">
+
+            <div class="form-group">
+                <div class="col">
+                <div class="row">
+                    <label class="control-label" for="shipping" required="required">Wybierz opcję dostawy</label>
+                </div>
+                <input list="shipping" class="form-control">
+                <datalist id="shipping">
+                    <option value="paczkomat">Paczkomat 10,00 zł</option>
+                    <option value="ekonomiczny">List ekonomiczny 5,00 zł</option>
+                    <option value="polecony">List polecony 8,00 zł</option>
+                    <option value="kurier">Przesyłka kurierska, 15,00 zł</option>
+                </datalist>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col">
+                <div class="row">
+
+                    <label class="control-label" for="payment" required="required">Wybierz opcję płatności</label>
+                </div>
+                <input list="payment" class="form-control">
+                <datalist id="payment">
+                    <option value="paypal" >PAY PAL</option>
+                    <option value="internetowy">Karta płatnicza</option>
+                    <option value="internetowy">Przelew internetowy</option>
+                    <option value="przelew">Przelew zwykły</option>
+                    <option value="pobranie">Przy odbiorze + 5,00 zł</option>
+                </datalist>
+            </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col">
+                <div class="row">
+                    <label class="control-label" for="facture" required="required">Faktura</label>
+                </div>
+                <input list="facture" class="form-control">
+                <datalist id="facture">
+                    <option value="nie">NIE</option>
+                    <option onclick="show()" value="tak" id="check">TAK</option>
+                </datalist>
+            </div>
+            </div>
+
+
+    </form>
+</div>
+<div class="section">
+    <form action="#" th:action="@{/order/post}" th:object="${newOrder}" method="post">
+        <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="text-center">Dane do przesyłki</h3>
+                    <div class="btn-group">
+                        <button type="reset" class="btn btn-sm btn-danger" >Dodaj dane do przesyłki</button>
+                    </div>
+
+                    <div class="col-xs-12" style="height:30px;"></div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="name" required="required">Imię</label>
+                        <input th:field="*{name}" class="form-control" id="name" placeholder="Wpisz imię" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="surname" required="required">Nazwisko</label>
+                        <input th:field="*{surname}" class="form-control" id="surname" placeholder="Wpisz nazwisko" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="street" required="required">Hasło (minimum 6 znaków)*</label>
+                        <input th:field="*{street}" class="form-control" id="street" placeholder="Wpisz ulicę" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="homeNumber" required="required">Nr domu</label>
+                        <input th:field="*{homeNumber}" class="form-control" id="homeNumber" placeholder="Wpisz numer domu" type="text"/>
+                    <div class="form-group">
+                            <label class="control-label" for="flatNumber" >Nr mieszkania</label>
+                            <input th:field="*{flatNumber}" class="form-control" id="flatNumber" placeholder="Wpisz numer mieszkania" type="text"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="city" required="required" >Miejscowość</label>
+                            <input th:field="*{city}" class="form-control" id="city" placeholder="Wpisz miejscowość" type="tex"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="postcode" required="required" >Kod pocztowy</label>
+                            <input th:field="*{city}" class="form-control" id="postcode" placeholder="Wpisz kod pocztowy" type="text"/>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center">Faktura</h3>
+                    <div class="section" id="sec1" display="none">
+                    <div class="col-xs-12" style="height:5px;"></div>
+                    <div class="form-group" >
+                        <label class="control-label" for="factureNameComp" required="required">Nazwa firmy</label>
+                        <input class="form-control" id="factureNameComp" placeholder="Wpisz nazwę firmy" type="text"/>
+                    </div>
+                    <div class="form-group"  >
+                        <label class="control-label" for="NIP" required="required">NIP</label>
+                        <input class="form-control" id="NIP" placeholder="Wpisz NIP" type="text"/>
+                    </div>
+                    <div class="form-group" >
+                        <label class="control-label" for="factureName" required="required">Imię</label>
+                        <input class="form-control" id="factureName" placeholder="Wpisz imię" type="text"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="factureSurname" required="required">Nazwisko</label>
+                            <input class="form-control" id="factureSurname" placeholder="Wpisz nazwisko" type="text"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="factureStreet" required="required">Ulica</label>
+                            <input class="form-control" id="factureStreet" placeholder="Wpisz ulicę" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="factureHomeNumber" required="required">Numer domu</label>
+                        <input class="form-control" id="factureHomeNumber" placeholder="Wpisz numer domu" type="text"/>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="control-label" for="factureFlatName" >Numer mieszkania</label>
+                            <input class="form-control" id="factureFlatName" placeholder="Wpisz numer mieszkania" type="text"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="factureCity" >Mijescowość</label>
+                            <input class="form-control" id="factureCity" placeholder="Wpisz miejscowosc" type="text"/>
+                    </div>
+                    <div class="form-group">
+                            <label class="control-label" for="facturePostcode" >Kod pocztowy</label>
+                            <input class="form-control" id="facturePostcode" placeholder="Wpisz kod pocztowy" type="text"/>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="btn-group-justified">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-sm btn-danger">Złóż zamówienie</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-default">Anulujć</button>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12" style="height:30px;"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<span th:replace="footer :: footer"></span>
+</body>
+<script type="text/javascript" src="/js/order.js"></script>
+</html>
