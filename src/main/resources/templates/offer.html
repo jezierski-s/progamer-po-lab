@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
 <head>
     <span th:replace="imports :: imports"></span>
     <title>Offer</title>
@@ -16,9 +17,17 @@
 </div>
 <div class="container">
     <div class="jumbotron text-center" style="background-color:rgba(48, 48, 48, .7)">
-        <h3>Oferta gier</h3>
-        <label for="search"> </label>
-        <input type="text" class="form-control" placeholder="Wyszukaj..." id="search"/>
+        <div id="badge" class="row">
+            <a th:if="${#httpServletRequest.requestURI == '/offer'}" th:href="@{/cart}" class="btn btn-default pull-right" id="butCart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Koszyk&nbsp;&nbsp;<span class="badge">{{itemCount}}</span></a>
+            <a th:if="${#httpServletRequest.requestURI == '/cart'}" th:href="@{/offer}" class="btn btn-danger pull-left" id="butBack"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;&nbsp;Powrót</a>
+        </div>
+        <div class="row">
+        <h3 th:text="${#httpServletRequest.requestURI == '/offer'}?'Oferta gier':'Koszyk'">Oferta gier</h3>
+        <span th:if="${#httpServletRequest.requestURI == '/offer'}" id="searchFilter">
+            <label for="search"> </label>
+            <input type="text" v-model="searchString" v-on:keyup="doFilter" class="form-control" placeholder="Wyszukaj..." id="search"/>
+        </span>
+        </div>
     </div>
 </div>
 <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
@@ -31,18 +40,31 @@
             <th>Platforma</th>
             <th>Rok wydania</th>
             <th>Deweloper</th>
+            <th>Cena</th>
+            <th>Dystrybucja</th>
+            <th>Stan</th>
             <th></th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="user : ${users}">
+        <tbody id="butBuy">
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+var games = [[${games}]];
+
+/*]]>*/
+</script>
+        <tr v-for="(game,ind) in gameArray" v-if="game.name.indexOf(searchString)>-1">
             <td></td>
             <td><a href=""><img height="75" width="50" src="" class="image-holder" /></a></td>
-            <td>Grand Theft Auto V</td>
+            <td v-text="game.name">Grand Theft Auto V</td>
             <td>PC, PS4, XOne</td>
             <td>2014</td>
-            <td>Rockstar Games</td>
-            <td><button class="btn btn-primary btn-sm" id="butBuy"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Do koszyka</button></td>
+            <td v-text="game.producer">Rockstar Games</td>
+            <td><span v-text="game.price">150</span> PLN</td>
+            <td v-text="game.distrib?'pudełkowa':'cyfrowa'">Rockstar Games</td>
+            <td v-text="game.isnew?'nowa':'używana'">Rockstar Games</td>
+            <td><button v-on:click="addItem(ind)" class="btn btn-primary btn-sm" id="butBuyb"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Do koszyka</button></td>
         </tr>
         </tbody>
     </table>
@@ -68,3 +90,5 @@
 </body>
 <script type="text/javascript" src="/js/offer.js"></script>
 </html>
+
+<!--<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>-->

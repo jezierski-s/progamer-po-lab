@@ -27,4 +27,9 @@ public class RestController {
             return "redirect:/register?fail";
         }
     }
+
+    @RequestMapping(value = "/api/addToCart", method = RequestMethod.POST)
+    public String addToCart(Model model) {
+            return "redirect:/";
+    }
 }

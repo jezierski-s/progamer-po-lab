@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class SampleController {
     @Autowired
     UserService userService;
+    @Autowired
+    GameService gameService;
 
     @RequestMapping("/")
     public String home(Model model) {
@@ -25,10 +27,23 @@ public class SampleController {
         model.addAttribute("newUser", new User());
         return "register";
     }
+
     @RequestMapping("/offer")
     public String offer(Model model) {
+        model.addAttribute("games", gameService.getAll());
+        return "offer";
+    }
+
+    @RequestMapping("/cart")
+    public String cart(Model model) {
         model.addAttribute("users", userService.getAll());
         return "offer";
     }
+    @RequestMapping("/order")
+    public String order(Model model) {
+        //model.addAttribute("users", userService.getAll());
+        return "order";
+    }
+
 
 }

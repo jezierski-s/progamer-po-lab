@@ -11,14 +11,14 @@ import java.util.List;
  */
 
 @Entity
-public class Order {
+public class GameOrder {
 
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
 
     private Integer id;
-    public List<Game> list;
+    //public List<Game> list;
     public String shipping;
     public String payment;
     public boolean facture;
@@ -44,9 +44,9 @@ public class Order {
         this.id = id;
     }
 
-    public void setList(List<Game> list) {
+    /*public void setList(List<Game> list) {
         this.list = list;
-    }
+    }*/
 
     public void setShipping(String shipping) {
         this.shipping = shipping;
@@ -132,9 +132,9 @@ public class Order {
         return id;
     }
 
-    public List<Game> getList() {
+    /*public List<Game> getList() {
         return list;
-    }
+    }*/
 
     public String getShipping() {
         return shipping;

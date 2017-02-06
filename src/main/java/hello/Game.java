@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.awt.*;
 
 /**
  * Created by michał on 2017-02-05.
@@ -14,15 +13,15 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-
     private Integer id;
+
     public String name;
     public double price;
     public String cover;
     public String producer;
     public String publisher;
     public String type;
-    public boolean isNew;
+    public boolean isnew;
     public boolean distrib;
 
     public Integer getId() {
@@ -81,12 +80,12 @@ public class Game {
         this.type = type;
     }
 
-    public boolean isNew() {
-        return isNew;
+    public boolean isIsnew() {
+        return isnew;
     }
 
-    public void setNew(boolean aNew) {
-        isNew = aNew;
+    public void setIsnew(boolean isnew) {
+        this.isnew = isnew;
     }
 
     public boolean isDistrib() {
