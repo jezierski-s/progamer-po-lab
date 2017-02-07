@@ -18,12 +18,11 @@
 <div class="container">
     <div class="jumbotron text-center" style="background-color:rgba(48, 48, 48, .7)">
         <div id="badge" class="row">
-            <a th:if="${#httpServletRequest.requestURI == '/offer'}" th:href="@{/cart}" class="btn btn-default pull-right" id="butCart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Koszyk&nbsp;&nbsp;<span class="badge">{{itemCount}}</span></a>
-            <a th:if="${#httpServletRequest.requestURI == '/cart'}" th:href="@{/offer}" class="btn btn-danger pull-left" id="butBack"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;&nbsp;Powrót</a>
+            <a  th:href="@{/cart}" class="btn btn-default pull-right" id="butCart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Koszyk&nbsp;&nbsp;<span class="badge">{{itemCount}}</span></a>
         </div>
         <div class="row">
-        <h3 th:text="${#httpServletRequest.requestURI == '/offer'}?'Oferta gier':'Koszyk'">Oferta gier</h3>
-        <span th:if="${#httpServletRequest.requestURI == '/offer'}" id="searchFilter">
+        <h3>Oferta gier</h3>
+        <span id="searchFilter">
             <label for="search"> </label>
             <input type="text" v-model="searchString" v-on:keyup="doFilter" class="form-control" placeholder="Wyszukaj..." id="search"/>
         </span>
@@ -51,6 +50,7 @@
 /*<![CDATA[*/
 
 var games = [[${games}]];
+var cart = [[${cart}]];
 
 /*]]>*/
 </script>

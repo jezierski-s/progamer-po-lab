@@ -1,5 +1,10 @@
 package hello;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,22 +12,11 @@ import java.util.List;
 /**
  * Created by slawek on 2017-02-06.
  */
-@Entity
+@Component
+@Scope("singleton")
 public class Cart {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
 
-    @ElementCollection
-    private List<Game> gameList;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private List<Game> gameList = new ArrayList();
 
     public List<Game> getGameList() {
         return gameList;
@@ -32,7 +26,13 @@ public class Cart {
         this.gameList = gameList;
     }
 
-    public void addToGameList(Game game) {
-        this.gameList.add(game);
+    public void addToCart(Game game) {
+        gameList.add(game);
+    }
+
+    public void removeFromCart(int ind) {gameList.remove(ind);}
+
+    public void clearCart() {
+        this.gameList = new ArrayList();
     }
 }

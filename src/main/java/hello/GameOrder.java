@@ -40,6 +40,18 @@ public class GameOrder {
     public String facturePostCode;
     public double value;
 
+    public GameOrder(User user) {
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.street = user.getStreet();
+        this.homeNumber = user.getHouseNum();
+        this.flatNumber = user.getFlatNum();
+        this.city = user.getCity();
+        this.postcode = user.getPostal();
+    }
+
+    public GameOrder() {}
+
     public void setId(Integer id) {
         this.id = id;
     }

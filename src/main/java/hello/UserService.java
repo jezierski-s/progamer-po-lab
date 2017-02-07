@@ -21,6 +21,11 @@ public class UserService {
         return userRepo.findAll();
     }
 
+    public User get(int id) {
+        User user = userRepo.getOne(id);
+        return user;
+    }
+
     public User createUser(User newUser) {
         if (!(loginExists(newUser) || mailExists(newUser))) {
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));

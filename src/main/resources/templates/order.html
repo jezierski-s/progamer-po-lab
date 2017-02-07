@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <span th:replace="imports :: imports"></span>
     <title>Order</title>
@@ -15,74 +15,61 @@
         <h3 class="text-center">Zamówienie</h3>
     </div>
 </div>
+<form action="#" th:action="@{/order/post}" th:object="${newOrder}" method="post" id="faktura">
 <div class="section">
-    <form action="#" th:action="@{/order/post}" th:object="${newOrder}" method="post">
     <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
         <div class="form-inline">
-
             <div class="form-group">
                 <div class="col">
-                <div class="row">
-                    <label class="control-label" for="shipping" required="required">Wybierz opcję dostawy</label>
-                </div>
-                <input th:field="*{Shipping}" list="shipping" class="form-control">
-                <datalist id="shipping">
-                    <option value="paczkomat">Paczkomat 10,00 zł</option>
-                    <option value="ekonomiczny">List ekonomiczny 5,00 zł</option>
-                    <option value="polecony">List polecony 8,00 zł</option>
-                    <option value="kurier">Przesyłka kurierska, 15,00 zł</option>
-                </datalist>
+                        <label class="control-label" for="shipping" required="required">Wybierz opcję dostawy</label><br/>
+
+                    <select th:field="*{Shipping}" id="shipping" class="form-control">
+                        <option value="paczkomat">Paczkomat 10,00 zł</option>
+                        <option value="ekonomiczny">List ekonomiczny 5,00 zł</option>
+                        <option value="polecony">List polecony 8,00 zł</option>
+                        <option value="kurier">Przesyłka kurierska, 15,00 zł</option>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col">
-                <div class="row">
-
-                    <label class="control-label" for="payment" required="required">Wybierz opcję płatności</label>
-                </div>
-                <input th:field="*{payment}" list="payment" class="form-control">
-                <datalist id="payment">
-                    <option value="paypal" >PAY PAL</option>
-                    <option value="internetowy">Karta płatnicza</option>
-                    <option value="internetowy">Przelew internetowy</option>
-                    <option value="przelew">Przelew zwykły</option>
-                    <option value="pobranie">Przy odbiorze + 5,00 zł</option>
-                </datalist>
+                        <label class="control-label" for="payment" required="required">Wybierz opcję płatności</label><br/>
+                    <select th:field="*{payment}" class="form-control" id="payment">
+                        <option value="paypal" >PAY PAL</option>
+                        <option value="internetowy">Karta płatnicza</option>
+                        <option value="internetowy">Przelew internetowy</option>
+                        <option value="przelew">Przelew zwykły</option>
+                        <option value="pobranie">Przy odbiorze + 5,00 zł</option>
+                    </select>
                 </div>
             </div>
 
 
             <div class="form-group">
                 <div class="col">
-                <div class="row">
-                    <label class="control-label" for="facture" required="required">Faktura</label>
-                </div>
-                <input th:field="*{facture}" list="facture" class="form-control">
-                <datalist id="facture">
-                    <option value="nie">NIE</option>
-                    <option onclick="show()" value="tak" id="check">TAK</option>
-                </datalist>
+                    <label class="control-label" for="facture" required="required">Faktura</label><br/>
+                    <select v-on:change="dropdownChange()" id="facture" th:field="*{facture}" class="form-control">
+                        <option value="false">NIE</option>
+                        <option value="true" id="check">TAK</option>
+                    </select>
                 </div>
             </div>
 
         </div>
-
+</div>
 </div>
 <div class="section">
         <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
             <div class="row">
                 <div class="col-md-4">
                     <h3 class="text-center">Dane do przesyłki</h3>
-                    <div class="btn-group">
-                        <button type="reset" class="btn btn-sm btn-danger" >Dodaj dane do przesyłki</button>
-                    </div>
 
                     <div class="col-xs-12" style="height:30px;"></div>
 
                     <div class="form-group">
                         <label class="control-label" for="name" required="required">Imię</label>
-                        <input th:field="*{name}" class="form-control" id="name" placeholder="Wpisz imię" type="text"/>
+                        <input name="name" th:value="${newOrder.name}" class="form-control" id="name" placeholder="Wpisz imię" type="text"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="surname" required="required">Nazwisko</label>
@@ -101,7 +88,7 @@
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="city" required="required" >Miejscowość</label>
-                            <input th:field="*{city}" class="form-control" id="city" placeholder="Wpisz miejscowość" type="tex"/>
+                            <input th:field="*{city}" class="form-control" id="city" placeholder="Wpisz miejscowość" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="postcode" required="required" >Kod pocztowy</label>
@@ -111,11 +98,11 @@
                 </div>
                 <div class="col-md-4">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" v-if="dropdownYes == 'true'">
                     <h3 class="text-center">Faktura</h3>
                     <div class="section" id="sec1" display="none">
                     <div class="col-xs-12" style="height:5px;"></div>
-                    <div class="form-group" >
+                    <div class="form-group">
                         <label class="control-label" for="factureNameComp" required="required">Nazwa firmy</label>
                         <input th:field="*{factureNameComp}" class="form-control" id="factureNameComp" placeholder="Wpisz nazwę firmy" type="text"/>
                     </div>
@@ -141,8 +128,8 @@
                     </div>
 
                     <div class="form-group">
-                            <label class="control-label" for="factureFlatName" >Numer mieszkania</label>
-                            <input th:field="*{factureFlatName}" class="form-control" id="factureFlatName" placeholder="Wpisz numer mieszkania" type="text"/>
+                            <label class="control-label" for="factureFlatNumber" >Numer mieszkania</label>
+                            <input th:field="*{factureFlatNumber}" class="form-control" id="factureFlatNumber" placeholder="Wpisz numer mieszkania" type="text"/>
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="factureCity" >Mijescowość</label>
@@ -150,27 +137,27 @@
                     </div>
                     <div class="form-group">
                             <label class="control-label" for="facturePostcode" >Kod pocztowy</label>
-                            <input th:field="*{facturePostcode}" class="form-control" id="facturePostcode" placeholder="Wpisz kod pocztowy" type="text"/>
+                            <input th:field="*{facturePostCode}" class="form-control" id="facturePostcode" placeholder="Wpisz kod pocztowy" type="text"/>
                     </div>
                     </div>
                 </div>
             </div>
+                    <div class="col-md-6">
+                        <div class="btn-group-justified">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-danger">Anuluj</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-sm btn-primary">Złóż zamówienie</button>
+                            </div>
 
-                    <div class="btn-group-justified">
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-sm btn-danger">Złóż zamówienie</button>
                         </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-default">Anulujć</button>
-                        </div>
-
                     </div>
                     <div class="col-xs-12" style="height:30px;"></div>
                 </div>
             </div>
         </form>
-        </div>
-</div>
+
 <span th:replace="footer :: footer"></span>
 </body>
 <script type="text/javascript" src="/js/order.js"></script>

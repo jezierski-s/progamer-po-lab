@@ -51,39 +51,39 @@
 				<div class="col-xs-12" style="height:5px;"></div>
               <div class="form-group">
                 <label class="control-label" for="formName" required="required">Imię</label>
-                <input class="form-control" id="formName" placeholder="Podaj swoje imię" type="text"/>
+                <input class="form-control" th:field="*{name}" id="formName" placeholder="Podaj swoje imię" type="text"/>
               </div>
               <div class="form-group">
                 <label class="control-label" for="formName" required="required">Nazwisko</label>
-                <input class="form-control" id="formName" placeholder="Podaj swoje nazwisko" type="text"/>
+                <input class="form-control" th:field="*{surname}" id="formSurname" placeholder="Podaj swoje nazwisko" type="text"/>
               </div>
 			  <div class="form-group">
                 <label class="control-label" for="formName" required="required">Ulica</label>
-                <input class="form-control" id="formName" placeholder="Podaj ulicę zamieszkania" type="text"/>
+                <input class="form-control" th:field="*{street}" id="formStreet" placeholder="Podaj ulicę zamieszkania" type="text"/>
               </div>
 			  <div class="row">
 				  <div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="formName" required="required">Nr domu</label>
-						<input class="form-control" id="formName" placeholder="Podaj nr domu" type="text"/>
+						<input class="form-control" th:field="*{houseNum}" id="formHouseNum" placeholder="Podaj nr domu" type="text"/>
 					</div>
 				  </div>
 				  <div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="formName" required="required">Nr mieszkania</label>
-						<input class="form-control" id="formName" placeholder="Podaj nr mieszkania" type="text"/>
+						<input class="form-control" th:field="*{flatNum}" id="formFlatNum" placeholder="Podaj nr mieszkania" type="text"/>
 					</div>
 				  </div>
 			  </div>
 			  <div class="form-group">
                 <label class="control-label" for="formName" required="required">Miejscowość</label>
-                <input class="form-control" id="formName" placeholder="Podaj miejscowość zamieszkania" type="text"/>
+                <input class="form-control" id="formCity" th:field="*{city}" placeholder="Podaj miejscowość zamieszkania" type="text"/>
               </div>
 			  <div class="row">
 				  <div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="formName" required="required">Kod pocztowy</label>
-						<input class="form-control" id="formName" placeholder="Podaj kod pocztowy" type="text"/>
+						<input class="form-control" id="formPostal" th:field="*{postal}" placeholder="Podaj kod pocztowy" type="text"/>
 					</div>
 				  </div>
 			  </div>

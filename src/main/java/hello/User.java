@@ -18,8 +18,61 @@ public class User {
     private String password;
     private String mail;
 
-
     private String name;
+    private String surname;
+    private String street;
+    private String houseNum;
+    private String flatNum;
+    private String city;
+    private String postal;
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNum() {
+        return houseNum;
+    }
+
+    public void setHouseNum(String houseNum) {
+        this.houseNum = houseNum;
+    }
+
+    public String getFlatNum() {
+        return flatNum;
+    }
+
+    public void setFlatNum(String flatNum) {
+        this.flatNum = flatNum;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostal() {
+        return postal;
+    }
+
+    public void setPostal(String postal) {
+        this.postal = postal;
+    }
 
     public Integer getId() {
         return id;

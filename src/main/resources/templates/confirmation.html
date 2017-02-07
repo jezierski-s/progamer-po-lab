@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <span th:replace="imports :: imports"></span>
+    <title>Register</title>
+</head>
+<body style="background-image:url(https://www.eveonline.com/assets/img/universe/background_nebula.jpg)">
+<div class="section">
+    <div class="col-xs-12" style="height:100px;"></div>
+    <span th:replace="header :: header"></span>
+</div>
+
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(48, 48, 48, .7)">
+        <h3 class="text-center">Rejestracja</h3>
+    </div>
+</div>
+<div class="section">
+
+    <div class="container" style="background-color:rgba(48, 48, 48, .7); border-radius:6px">
+        <div style="height:40px"></div>
+        <div class="text-center">
+            Rejestracja przebiegła pomyślnie, link aktywacyjny został wysłany na adres <a th:href="@{mailto:newUser.mail}" th:text="${newUser.mail}">chuj@dupa.pl</a>.<br/>
+            Będziesz mógł zalogować się na swoje konto dopiero po jego aktywacji.<br/>
+            <div style="height:40px"></div>
+            <a th:href="@{/}" class="btn btn-sm btn-primary">Strona główna</a>
+            <div style="height:40px"></div>
+        </div>
+    </div>
+</div>
+<span th:replace="footer :: footer"></span>
+</body>
+</html>

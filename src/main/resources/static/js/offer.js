@@ -10,7 +10,7 @@ var badge = new Vue({
   el: '#badge',
   data: {
     message: 'Hello Vue!',
-    itemCount: 0
+    itemCount: cart.gameList.length
   }
 })
 
@@ -24,10 +24,12 @@ var butBuy = new Vue({
     addItem: function (ind) {
         badge.itemCount++;
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "api/addToCart", false);
+        xhttp.open("POST", "/api/addToCart", false);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(this.gameArray[ind]));
-        //var response = JSON.parse(xhttp.responseText);
+        console.log(this.gameArray[ind])
+        var response = JSON.parse(xhttp.responseText);
+        console.log(response);
 }
   }
 })
@@ -40,7 +42,6 @@ var searchFilter = new Vue({
   methods: {
     doFilter: function () {
         butBuy.searchString = this.searchString;
-
     }
   }
 })
